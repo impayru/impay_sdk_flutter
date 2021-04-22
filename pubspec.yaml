@@ -1,6 +1,6 @@
 name: impay_sdk
 description: ImPay SDK
-version: 0.0.1
+version: 0.0.2
 homepage: https://impay.ru
 
 environment:
@@ -23,18 +23,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-  plugin:
-    platforms:
-      android:
-        package: ru.www.impay
-        pluginClass: ImPayForm
-      ios:
-        pluginClass: ImPayForm
-      macos:
-        pluginClass: ImPayForm
-      web:
-        pluginClass: ImPayForm
-        fileName: impay_sdk.dart
 
   # To add assets to your package, add an assets section, like this:
   assets:
