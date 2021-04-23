@@ -296,7 +296,9 @@ class _ImPayFormState extends State<ImPayForm> {
                               ),
                               elevation: 5.0
                             ),
-                            child: Text("Оплатить " + widget._sumPay.toString() + " ₽", style: TextStyle(fontSize: 17, color: Colors.white))
+                            child: Text("Оплатить" + (widget._sumPay > 0 ? " " + widget._sumPay.toString() + " \u{2713}" : ""),
+                                style: TextStyle(fontSize: 17, color: Colors.white)
+                            )
                           )
                         )
                       ),
