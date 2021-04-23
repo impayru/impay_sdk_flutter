@@ -38,7 +38,7 @@ class _ImPayFormState extends State<ImPayForm> {
   bool _isButtonDisabled = true;
   bool _loading = false;
   String _token;
-  int _tokenId;
+  int _tokenId = 0;
 
   @override
   void initState() {
@@ -187,7 +187,7 @@ class _ImPayFormState extends State<ImPayForm> {
 
     @override
     Widget build(BuildContext context) {
-      return Scaffold(body: Container(
+      return _tokenId == 0 ? LinearProgressIndicator() : Scaffold(body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           padding: EdgeInsets.all(5.0),
@@ -208,9 +208,9 @@ class _ImPayFormState extends State<ImPayForm> {
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Image.asset('imgs/logo_white.png', scale: 4.0),
+                          Image.asset('imgs/logo_white.png', scale: 4.0, package: 'impay_sdk'),
                           TextButton(
-                            child: Image.asset('imgs/close.png', scale: 4.0),
+                            child: Image.asset('imgs/close.png', scale: 4.0, package: 'impay_sdk'),
                             style: TextButton.styleFrom(
                               minimumSize: Size(40, 40),
                               shape: const RoundedRectangleBorder(
@@ -311,10 +311,10 @@ class _ImPayFormState extends State<ImPayForm> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Image.asset('imgs/pci.png', scale: 4.0),
-                          Image.asset('imgs/visa.png', scale: 4.0),
-                          Image.asset('imgs/mastercard.png', scale: 4.0),
-                          Image.asset('imgs/mir.png', scale: 4.0)
+                          Image.asset('imgs/pci.png', scale: 4.0, package: 'impay_sdk'),
+                          Image.asset('imgs/visa.png', scale: 4.0, package: 'impay_sdk'),
+                          Image.asset('imgs/mastercard.png', scale: 4.0, package: 'impay_sdk'),
+                          Image.asset('imgs/mir.png', scale: 4.0, package: 'impay_sdk')
                         ]
                       )
                     ),
