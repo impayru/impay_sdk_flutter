@@ -128,15 +128,19 @@ class _ImPayFormState extends State<ImPayForm> {
 
   payCard() async {
 
-    var card = _getOnlyNumbers(_card.text);
-    var srok = _getOnlyNumbers(_srok.text);
-    var cvv = _getOnlyNumbers(_cvv.text);
-    var email = _getOnlyNumbers(_email.text);
+    if (_token != null && _token.isNotEmpty) {
+      var card = _getOnlyNumbers(_card.text);
+      var srok = _getOnlyNumbers(_srok.text);
+      var cvv = _getOnlyNumbers(_cvv.text);
+      var email = _getOnlyNumbers(_email.text);
 
-    var paytoken = await Cryptor.tokenize(card, srok, cvv, _token);
+      var paytoken = await Cryptor.tokenize(card, srok, cvv, _token);
 
-    if (widget._onCreatePay != null) {
-      widget._onCreatePay(base64.encode(utf8.encode(json.encode({"id": _tokenId, "paytoken": paytoken}))), email);
+      if (widget._onCreatePay != null) {
+        widget._onCreatePay(base64.encode(
+            utf8.encode(json.encode({"id": _tokenId, "paytoken": paytoken}))),
+            email);
+      }
     }
     Navigator.pop(context, 1);
   }
@@ -187,7 +191,7 @@ class _ImPayFormState extends State<ImPayForm> {
 
     @override
     Widget build(BuildContext context) {
-      return Scaffold(body: Container(
+      return ListView(children: <Widget>[Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           padding: EdgeInsets.all(5.0),
@@ -334,6 +338,6 @@ class _ImPayFormState extends State<ImPayForm> {
                 )
               ]
           )
-      ));
+      )]);
     }
 }
