@@ -191,7 +191,7 @@ class _ImPayFormState extends State<ImPayForm> {
 
     @override
     Widget build(BuildContext context) {
-      return ListView(children: <Widget>[Container(
+      return Scaffold(body:ListView(children: <Widget>[Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           padding: EdgeInsets.all(5.0),
@@ -338,6 +338,6 @@ class _ImPayFormState extends State<ImPayForm> {
                 )
               ]
           )
-      )]);
+      )]));
     }
 }

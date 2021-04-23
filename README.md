@@ -36,7 +36,7 @@ callback(paytoken, email) {
 import 'package:impay_sdk/impay_sdk.dart'; 
 
 int IdPartner = 2;
-doible Sum = 200.00;
+double Sum = 200.00;
 
 callback(paytoken, email) {
     //TODO: send pay data to your server
@@ -45,7 +45,7 @@ callback(paytoken, email) {
 Navigator.push(
     context,
     MaterialPageRoute(
-        builder: (context) => ImPayForm(IdPartner, Sum, callback);
+        builder: (context) => ImPayForm(IdPartner, Sum, callback)
     )
 );
 
