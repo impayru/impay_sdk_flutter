@@ -187,7 +187,7 @@ class _ImPayFormState extends State<ImPayForm> {
 
     @override
     Widget build(BuildContext context) {
-      return _tokenId == 0 ? LinearProgressIndicator() : Scaffold(body: Container(
+      return Scaffold(body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           padding: EdgeInsets.all(5.0),
