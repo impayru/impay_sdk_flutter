@@ -117,7 +117,7 @@ class _ImPayFormState extends State<ImPayForm> {
       res = String.fromCharCodes(base64.decode(r['key']));
       setState(() {
         _token = res;
-        _tokenId = int.parse(r['id']);
+        _tokenId = r['id'];
         //print(_token);
       });
     }
@@ -264,9 +264,9 @@ class _ImPayFormState extends State<ImPayForm> {
                           ),
                           SizedBox(
                             width: (MediaQuery.of(context).size.width - 50) / 2 - 10.0,
-                            height: 80.0,
+                            height: 70.0,
                             child: TextField(
-                              keyboardType: TextInputType.visiblePassword,
+                              keyboardType: TextInputType.number,
                               controller: _cvv,
                               focusNode: _focusCvv,
                               style: TextStyle(color: Color(0xFF2E2E2E), fontSize: 14.0),

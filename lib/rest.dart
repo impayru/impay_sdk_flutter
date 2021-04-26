@@ -1,5 +1,5 @@
 import 'package:http/http.dart' as http;
-import 'dart:convert' show json, base64, ascii;
+import 'dart:convert' show json;
 
 const SERVER_IP = 'https://api.impay.ru';
 

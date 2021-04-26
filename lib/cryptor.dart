@@ -7,7 +7,7 @@ class Cryptor {
     return rsaKey.encrypt(json.encode({
       "number": card,
       "holder": '',
-      "year": srok.substring(2,2),
+      "year": srok.substring(2, 4),
       "month": srok.substring(0, 2),
       "cvc": cvv
     }));
