@@ -5,7 +5,7 @@ const SERVER_IP = 'https://api.impay.ru';
 
 class Rest {
 
-  static Future<String> getToken(int partnerId) async {
+  static Future<String?> getToken(int partnerId) async {
     try {
       var res = await http.post(
           Uri.parse("$SERVER_IP/v1/sdk/token"),

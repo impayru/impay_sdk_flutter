@@ -37,7 +37,7 @@ class _ImPayFormState extends State<ImPayForm> {
 
   bool _isButtonDisabled = true;
   bool _loading = false;
-  String _token;
+  String? _token;
   int _tokenId = 0;
 
   @override
@@ -128,13 +128,13 @@ class _ImPayFormState extends State<ImPayForm> {
 
   payCard() async {
 
-    if (_token != null && _token.isNotEmpty) {
+    if (_token != null && _token!.isNotEmpty) {
       var card = _getOnlyNumbers(_card.text);
       var srok = _getOnlyNumbers(_srok.text);
       var cvv = _getOnlyNumbers(_cvv.text);
       var email = _getOnlyNumbers(_email.text);
 
-      var paytoken = await Cryptor.tokenize(card, srok, cvv, _token);
+      var paytoken = await Cryptor.tokenize(card, srok, cvv, _token!);
 
       if (widget._onCreatePay != null) {
         widget._onCreatePay(base64.encode(
