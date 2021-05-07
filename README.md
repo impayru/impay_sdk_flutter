@@ -38,8 +38,19 @@ import 'package:impay_sdk/impay_sdk.dart';
 int IdPartner = 2;
 double Sum = 200.00;
 
-callback(paytoken, email) {
-    //TODO: send pay data to your server
+callback(paytoken, email) async {
+    var res = await Rest.attemptRegCard(paytoken);
+    if (res != null) {
+      var r = json.decode(res);
+      if (r['url'] != null) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => PayWebView(r['url'], r['pa'], r['md'], r['creq'], r['termurl'])
+            )
+        );
+      }
+    }
 }
 
 Navigator.push(
