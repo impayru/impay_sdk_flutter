@@ -60,17 +60,24 @@ class _PayWebViewState extends State<PayWebView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: Column(children: <Widget>[
-      IconButton(icon: Icon(Icons.close), onPressed: () {
-        Navigator.pop(context);
-      }),
-      WebView(
-        initialUrl: _3dsData(widget.url, widget.pa, widget.md, widget.creq, widget.termurl),
-        javascriptMode: JavascriptMode.unrestricted,
-        javascriptChannels: {_channel},
-          onWebViewCreated: (WebViewController webViewController) {
-            _controller = webViewController;
-            _controller!.loadUrl(_3dsData(widget.url, widget.pa, widget.md, widget.creq, widget.termurl));
-          }
+      Container(
+        alignment: Alignment.bottomRight,
+        padding: EdgeInsets.only(top: 30.0),
+        child: IconButton(icon: Icon(Icons.close), onPressed: () {
+          Navigator.pop(context);
+        })
+      ),
+      Container(
+        height: MediaQuery.of(context).size.height - 30.0,
+        child: WebView(
+          initialUrl: _3dsData(widget.url, widget.pa, widget.md, widget.creq, widget.termurl),
+          javascriptMode: JavascriptMode.unrestricted,
+          javascriptChannels: {_channel},
+            onWebViewCreated: (WebViewController webViewController) {
+              _controller = webViewController;
+              _controller!.loadUrl(_3dsData(widget.url, widget.pa, widget.md, widget.creq, widget.termurl));
+            }
+        )
       )
     ]));
   }
