@@ -12,7 +12,20 @@ class ImPayForm extends StatefulWidget {
   final int _partnerId;
   final Function(String, String) _onCreatePay;
   final double _sumPay;
-  ImPayForm(this._partnerId, this._sumPay, this._onCreatePay);
+  final Color colorBgTop;
+  final Color colorBgButtom;
+  final Color colorButton;
+  final Color colorButtonDisabled;
+  final Color colorText;
+  final Color colorTextLight;
+  ImPayForm(this._partnerId, this._sumPay, this._onCreatePay, {
+    this.colorBgTop = const Color(0xFF009DF5),
+    this.colorBgButtom = const Color(0xFF027FC6),
+    this.colorButton = const Color(0xFF00A3FF),
+    this.colorButtonDisabled = const Color(0xFF61C6FF),
+    this.colorText = const Color(0xFF2E2E2E),
+    this.colorTextLight = const Color(0xFFD2EFFF),
+  });
 
   @override
   _ImPayFormState createState() => _ImPayFormState();
@@ -20,7 +33,7 @@ class ImPayForm extends StatefulWidget {
 
 class _ImPayFormState extends State<ImPayForm> {
 
-  var _card = MaskedTextController(mask: '0000-0000-0000-000000');
+  var _card = MaskedTextController(mask: '0000 0000 0000 000000');
   var _srok = MaskedTextController(mask: '00/00');
   var _cvv = MaskedTextController(mask: '000');
   var _email = TextEditingController();
@@ -200,8 +213,8 @@ class _ImPayFormState extends State<ImPayForm> {
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                   colors: [
-                    Color(0xFF027FC6),
-                    Color(0xFF009DF5),
+                    widget.colorBgButtom,
+                    widget.colorBgTop,
                   ]
               )
           ),
@@ -244,7 +257,7 @@ class _ImPayFormState extends State<ImPayForm> {
                           keyboardType: TextInputType.number,
                           controller: _card,
                           focusNode: _focusCard,
-                          style: TextStyle(color: Color(0xFF2E2E2E), fontSize: 14.0),
+                          style: TextStyle(color: widget.colorText, fontSize: 14.0),
                           decoration: inputDecoration('Номер карты', 'Введите номер карты', _cardValidate)
                         )
                       ),
@@ -258,7 +271,7 @@ class _ImPayFormState extends State<ImPayForm> {
                               keyboardType: TextInputType.number,
                               controller: _srok,
                               focusNode: _focusSrok,
-                              style: TextStyle(color: Color(0xFF2E2E2E), fontSize: 14.0),
+                              style: TextStyle(color: widget.colorText, fontSize: 14.0),
                               decoration: inputDecoration('ММ/ГГ', 'Неверный срок действия', _srokValidate)
                             )
                           ),
@@ -269,7 +282,7 @@ class _ImPayFormState extends State<ImPayForm> {
                               keyboardType: TextInputType.number,
                               controller: _cvv,
                               focusNode: _focusCvv,
-                              style: TextStyle(color: Color(0xFF2E2E2E), fontSize: 14.0),
+                              style: TextStyle(color: widget.colorText, fontSize: 14.0),
                               decoration: inputDecoration('CVC', 'Код с обратной стороны карты', _cvvValidate)
                             )
                           ),
@@ -282,7 +295,7 @@ class _ImPayFormState extends State<ImPayForm> {
                           keyboardType: TextInputType.emailAddress,
                           controller: _email,
                           focusNode: _focusEmail,
-                          style: TextStyle(color: Color(0xFF2E2E2E), fontSize: 14.0),
+                          style: TextStyle(color: widget.colorText, fontSize: 14.0),
                           decoration: inputDecoration('Email', 'Неверный адрес', _emailValidate)
                         )
                       ),
@@ -293,7 +306,7 @@ class _ImPayFormState extends State<ImPayForm> {
                           child: TextButton(
                             onPressed: _isButtonDisabled || _loading ? null : () => payCard(),
                             style: TextButton.styleFrom(
-                              backgroundColor: _isButtonDisabled || _loading ? Color(0xFF61C6FF) : Color(0xFF00A3FF),
+                              backgroundColor: _isButtonDisabled || _loading ? widget.colorButtonDisabled : widget.colorButton,
                               minimumSize: Size(300, 63),
                               shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -329,8 +342,8 @@ class _ImPayFormState extends State<ImPayForm> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text('+7 (8332) 25-54-44', style: TextStyle(color: Color(0xFFD2EFFF), fontSize: 12.0)),
-                          Text('support@impay.ru', style: TextStyle(color: Color(0xFFD2EFFF), fontSize: 12.0)),
+                          Text('+7 (8332) 25-54-44', style: TextStyle(color: widget.colorTextLight, fontSize: 12.0)),
+                          Text('support@impay.ru', style: TextStyle(color: widget.colorTextLight, fontSize: 12.0)),
                         ]
                       )
                     )
