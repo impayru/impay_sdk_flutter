@@ -342,8 +342,7 @@ class _ImPayFormState extends State<ImPayForm> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text('+7 (8332) 25-54-44', style: TextStyle(color: widget.colorTextLight, fontSize: 12.0)),
-                          Text('support@impay.ru', style: TextStyle(color: widget.colorTextLight, fontSize: 12.0)),
+                          Text('www.impay.ru', style: TextStyle(color: widget.colorTextLight, fontSize: 12.0)),
                         ]
                       )
                     )
