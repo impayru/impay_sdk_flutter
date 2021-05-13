@@ -52,6 +52,9 @@ class _ImPayFormState extends State<ImPayForm> {
   bool _loading = false;
   String? _token;
   int _tokenId = 0;
+  String _sumInfo = '';
+  double comisPc = 0.00;
+  double comisMin = 0.00;
 
   @override
   void initState() {
@@ -92,6 +95,17 @@ class _ImPayFormState extends State<ImPayForm> {
     setState(() {});
   }
 
+  calcSumInfo() async {
+    double summ = widget._sumPay;
+    double comis = summ * comisPc;
+    if (comis < comisMin) {
+      comis = comisMin;
+    }
+    setState(() {
+      _sumInfo = widget._sumPay > 0 ? " " + (summ + comis).toStringAsFixed(2) + " руб" : "";
+    });
+  }
+
   void onChangefocus() async {
     var card = _card.text;
     var srok = _srok.text;
@@ -126,13 +140,16 @@ class _ImPayFormState extends State<ImPayForm> {
     });
     var res = await Rest.getToken(widget._partnerId);
     if (res != null) {
-      var r = json.decode(res);
+      var r = json.decode(res['token']);
       res = String.fromCharCodes(base64.decode(r['key']));
       setState(() {
         _token = res;
         _tokenId = r['id'];
+        comisPc = double.parse(res['comispc']);
+        comisMin = double.parse(res['comismin']);
         //print(_token);
       });
+      calcSumInfo();
     }
     setState(() {
       _loading = false;
@@ -313,7 +330,7 @@ class _ImPayFormState extends State<ImPayForm> {
                               ),
                               elevation: 5.0
                             ),
-                            child: Text("Оплатить" + (widget._sumPay > 0 ? " " + widget._sumPay.toString() + " руб" : ""),
+                            child: Text("Оплатить" + _sumInfo,
                                 style: TextStyle(fontSize: 17, color: Colors.white)
                             )
                           )
@@ -340,7 +357,7 @@ class _ImPayFormState extends State<ImPayForm> {
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 50.0),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text('www.impay.ru', style: TextStyle(color: widget.colorTextLight, fontSize: 12.0)),
                         ]
