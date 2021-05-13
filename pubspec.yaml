@@ -1,6 +1,6 @@
 name: impay_sdk
 description: ImPay SDK
-version: 0.0.20
+version: 0.0.21
 homepage: https://impay.ru
 
 environment:

@@ -145,8 +145,8 @@ class _ImPayFormState extends State<ImPayForm> {
       setState(() {
         _token = res;
         _tokenId = r['id'];
-        comisPc = double.parse(res['comispc']);
-        comisMin = double.parse(res['comismin']);
+        comisPc = res['comispc'];
+        comisMin = res['comismin'];
         //print(_token);
       });
       calcSumInfo();
