@@ -97,7 +97,7 @@ class _ImPayFormState extends State<ImPayForm> {
 
   calcSumInfo() async {
     double summ = widget._sumPay;
-    double comis = summ * comisPc;
+    double comis = summ * comisPc / 100.0;
     if (comis < comisMin) {
       comis = comisMin;
     }
