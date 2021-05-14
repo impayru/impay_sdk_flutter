@@ -141,9 +141,9 @@ class _ImPayFormState extends State<ImPayForm> {
     var res = await Rest.getToken(widget._partnerId);
     if (res != null) {
       var r = json.decode(res['token']);
-      res = String.fromCharCodes(base64.decode(r['key']));
+      var k = String.fromCharCodes(base64.decode(r['key']));
       setState(() {
-        _token = res;
+        _token = k;
         _tokenId = r['id'];
         comisPc = res['comispc'];
         comisMin = res['comismin'];
