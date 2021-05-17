@@ -18,6 +18,7 @@ class ImPayForm extends StatefulWidget {
   final Color colorButtonDisabled;
   final Color colorText;
   final Color colorTextLight;
+  final bool isRegCard;
   ImPayForm(this._partnerId, this._sumPay, this._onCreatePay, {
     this.colorBgTop = const Color(0xFF009DF5),
     this.colorBgButtom = const Color(0xFF027FC6),
@@ -25,6 +26,7 @@ class ImPayForm extends StatefulWidget {
     this.colorButtonDisabled = const Color(0xFF61C6FF),
     this.colorText = const Color(0xFF2E2E2E),
     this.colorTextLight = const Color(0xFFD2EFFF),
+    this.isRegCard = false
   });
 
   @override
@@ -238,7 +240,7 @@ class _ImPayFormState extends State<ImPayForm> {
           child: Column(
               children: <Widget>[
                 Padding(
-                    padding: EdgeInsets.all(25.0),
+                    padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0, bottom: 10.0),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -258,6 +260,10 @@ class _ImPayFormState extends State<ImPayForm> {
                         ]
                     )
                 ),
+                widget.isRegCard ? Padding(
+                  padding: EdgeInsets.only(left: 25.0, right: 25.0, bottom: 10.0),
+                  child: Text('Чтобы прикрепить к кошельку и подтвердить вашу карту мы спишем с нее небольшую сумму и потом сразу вернем', style: TextStyle(color: Color(0xFF8E8E8E), fontSize: 12.0))
+                ) : SizedBox(width: 1.0),
                 Container(
                   width: MediaQuery.of(context).size.width - 10.0,
                   padding: EdgeInsets.all(20.0),
