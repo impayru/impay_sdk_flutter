@@ -32,7 +32,7 @@ class _PayWebViewState extends State<PayWebView> {
   void pageStartedCallback(String url) {
     print(url);
     if (url == 'impayapp::close()') {
-      Navigator.pop(context);
+      Navigator.pop(context, 1);
     }
   }
 
