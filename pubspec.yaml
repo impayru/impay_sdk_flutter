@@ -1,6 +1,6 @@
 name: impay_sdk
 description: ImPay SDK
-version: 0.0.26
+version: 0.0.27
 homepage: https://impay.ru
 
 environment:
@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   http: ^0.13.0
   crypton: ^2.0.1
+  extended_masked_text: ^2.2.0
   webview_flutter: ^2.0.4
 
 dev_dependencies:

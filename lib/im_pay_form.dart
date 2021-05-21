@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'flutter_masked_text.dart';
+import 'package:extended_masked_text/extended_masked_text.dart';
 
 import 'cryptor.dart';
 import 'rest.dart';
@@ -35,9 +35,9 @@ class ImPayForm extends StatefulWidget {
 
 class _ImPayFormState extends State<ImPayForm> {
 
-  var _card = MaskedTextController(mask: '0000 0000 0000 000000');
-  var _srok = MaskedTextController(mask: '00/00');
-  var _cvv = MaskedTextController(mask: '000');
+  var _card = MaskedTextController(mask: '0000 0000 0000 000000', cursorBehavior: CursorBehaviour.end);
+  var _srok = MaskedTextController(mask: '00/00', cursorBehavior: CursorBehaviour.end);
+  var _cvv = MaskedTextController(mask: '000', cursorBehavior: CursorBehaviour.end);
   var _email = TextEditingController();
 
   var _focusCard = new FocusNode();
