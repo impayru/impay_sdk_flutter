@@ -178,8 +178,8 @@ class _ImPayFormState extends State<ImPayForm> {
   }
 
   _scanCard() async {
-    CardDetails cardDetails = await CardScanner.scanCard();
-    if (cardDetails.cardNumber.isNotEmpty) {
+    var cardDetails = await CardScanner.scanCard();
+    if (cardDetails != null && cardDetails.cardNumber.isNotEmpty) {
       setState(() {
         _card.text = cardDetails.cardNumber;
         _srok.text = cardDetails.expiryDate;
@@ -297,7 +297,7 @@ class _ImPayFormState extends State<ImPayForm> {
                                       ),
                                       elevation: 5.0
                                   ),
-                                  child: Text("Отсканировать карту" + _sumInfo,
+                                  child: Text("Отсканировать карту",
                                       style: TextStyle(fontSize: 17, color: Colors.white)
                                   )
                               )
