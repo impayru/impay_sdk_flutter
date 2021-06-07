@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  card_scanner: ^1.0.1-prerelease
   crypton: ^2.0.1
   extended_masked_text: ^2.2.0
   http: ^0.13.0

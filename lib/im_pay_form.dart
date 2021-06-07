@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:card_scanner/card_scanner.dart';
+//import 'package:card_scanner/card_scanner.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:extended_masked_text/extended_masked_text.dart';
@@ -177,7 +177,7 @@ class _ImPayFormState extends State<ImPayForm> {
     Navigator.pop(context, 1);
   }
 
-  _scanCard() async {
+  /*_scanCard() async {
     var cardDetails = await CardScanner.scanCard();
     if (cardDetails != null && cardDetails.cardNumber.isNotEmpty) {
       setState(() {
@@ -185,7 +185,7 @@ class _ImPayFormState extends State<ImPayForm> {
         _srok.text = cardDetails.expiryDate;
       });
     }
-  }
+  }*/
 
   String _getOnlyNumbers(String text) {
     String cleanedText = text;
@@ -283,26 +283,6 @@ class _ImPayFormState extends State<ImPayForm> {
                   ),
                   child: Column(
                     children: <Widget>[
-                      Padding(
-                          padding: EdgeInsets.only(top: 10.0, bottom: 15.0, left: 30.0, right: 30.0),
-                          child: SizedBox(
-                              height: 63,
-                              child: TextButton(
-                                  onPressed: _isButtonDisabled || _loading ? null : () => _scanCard(),
-                                  style: TextButton.styleFrom(
-                                      backgroundColor: _isButtonDisabled || _loading ? widget.colorButtonDisabled : widget.colorButton,
-                                      minimumSize: Size(300, 40),
-                                      shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                                      ),
-                                      elevation: 5.0
-                                  ),
-                                  child: Text("Отсканировать карту",
-                                      style: TextStyle(fontSize: 17, color: Colors.white)
-                                  )
-                              )
-                          )
-                      ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width - 50,
                         height: 70.0,
