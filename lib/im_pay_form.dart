@@ -18,6 +18,8 @@ class ImPayForm extends StatefulWidget {
   final Color colorButtonDisabled;
   final Color colorText;
   final Color colorTextLight;
+  final Color colorInputBorder;
+  final Color colorInputBorderActive;
   final bool isRegCard;
   ImPayForm(this._partnerId, this._sumPay, this._onCreatePay, {
     this.colorBgTop = const Color(0xFF009DF5),
@@ -26,6 +28,8 @@ class ImPayForm extends StatefulWidget {
     this.colorButtonDisabled = const Color(0xFF61C6FF),
     this.colorText = const Color(0xFF2E2E2E),
     this.colorTextLight = const Color(0xFFD2EFFF),
+    this.colorInputBorder = const Color(0xFFF4F3F8),
+    this.colorInputBorderActive = const Color(0xFFC4D0E9),
     this.isRegCard = false
   });
 
@@ -203,19 +207,19 @@ class _ImPayFormState extends State<ImPayForm> {
         border: OutlineInputBorder(
           borderSide: BorderSide(
               width: 1.0,
-              color: Color(0xFFF4F3F8),
+              color: widget.colorInputBorder,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
               width: 1.0,
-              color: Color(0xFFF4F3F8)
+              color: widget.colorInputBorder
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
               width: 1.0,
-              color: Color(0xFFC4D0E9)
+              color: widget.colorInputBorderActive
           ),
         ),
         errorBorder: OutlineInputBorder(
@@ -312,6 +316,9 @@ class _ImPayFormState extends State<ImPayForm> {
                             width: (MediaQuery.of(context).size.width - 50) / 2 - 10.0,
                             height: 70.0,
                             child: TextField(
+                              obscureText: true,
+                              enableSuggestions: false,
+                              autocorrect: false,
                               keyboardType: TextInputType.number,
                               controller: _cvv,
                               focusNode: _focusCvv,
