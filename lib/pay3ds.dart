@@ -41,7 +41,7 @@ class _PayWebViewState extends State<PayWebView> {
         '<body onload="onload()">'+
             '<form name="formpay" action="'+url+'" method="POST">'+
               (creq.isNotEmpty ?
-                '<input type="hidden" name="creq" value="'+creq+'">' :
+                '<input type="hidden" name="threeDSMethodData" value="'+creq+'">' :
                 ('<input type="hidden" name="PaReq" value="'+pa+'">'+ '<input type="hidden" name="MD" value="'+md+'">')
               ) +
               '<input type="hidden" name="TermUrl" value="'+termurl+'">'+
